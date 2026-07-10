@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MindMate AI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/chat.css') }}">
+
+</head>
+
+<body>
+
+<div class="chat-container">
+
+    <div class="chat-header">
+        💜 MindMate AI
+    </div>
+
+    <div class="chat-box" id="chat-box">
+
+        <div class="ai-message">
+            <span>
+                Hello 👋 I'm MindMate AI.<br><br>
+                How are you feeling today?
+            </span>
+        </div>
+
+    </div>
+
+    <div class="chat-input">
+
+        <input
+            id="message"
+            type="text"
+            placeholder="Type your thoughts here...">
+
+        <button
+            class="btn btn-primary"
+            onclick="sendMessage()">
+
+            Send
+
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+
+const input=document.getElementById("message");
+
+input.addEventListener("keypress",function(e){
+
+    if(e.key==="Enter"){
+
+        sendMessage();
+
+    }
+
+});
+
+async function sendMessage(){
+
+    const chat=document.getElementById("chat-box");
+
+    const message=input.value.trim();
+
+    if(message==="") return;
+
+    chat.innerHTML+=`
+    <div class="user-message">
+        <span>${message}</span>
+    </div>
+    `;
+
+    input.value="";
+
+    chat.innerHTML+=`
+    <div class="ai-message" id="typing">
+        <span>MindMate is typing...</span>
+    </div>
+    `;
+
+    chat.scrollTop=chat.scrollHeight;
+
+    const response=await fetch("/ask",{
+
+        method:"POST",
+
+        headers:{
+            "Content-Type":"application/json"
+        },
+
+        body:JSON.stringify({
+
+            message:message
+
+        })
+
+    });
+
+    const data=await response.json();
+
+    document.getElementById("typing").remove();
+
+    chat.innerHTML+=`
+    <div class="ai-message">
+        <span>${data.reply}</span>
+    </div>
+    `;
+
+    chat.scrollTop=chat.scrollHeight;
+
+}
+
+</script>
+
+</body>
+</html>

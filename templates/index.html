@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindMate AI</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    {% include 'partials/navbar.html' %}
+
+    <!-- ================= NAVBAR ================= -->
+   
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Your Safe Space for <span>Mental Wellness</span></h1>
+
+        <p>
+            Chat with an AI companion, track your mood,
+            write your thoughts, and improve your mental well-being
+            one day at a time.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/register" class="btn btn-primary">Start Your Journey</a>
+            <a href="#features" class="btn btn-secondary">Learn More</a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-image">
+
+        🧠💜
+
+    </div>
+
+</section>
+
+    <!-- Hero section will come next -->
+     <!-- ================= FEATURES ================= -->
+
+<section class="features" id="features">
+
+    <h2>Why Choose MindMate AI?</h2>
+
+    <p class="feature-subtitle">
+        Everything you need to support your mental wellness journey in one place.
+    </p>
+
+    <div class="feature-container">
+
+        <div class="feature-card">
+            <div class="icon">🤖</div>
+            <h3>AI Companion</h3>
+            <p>Talk anytime with an AI companion that listens, supports, and encourages.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">😊</div>
+            <h3>Mood Tracker</h3>
+            <p>Record your daily emotions and discover patterns over time.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">📖</div>
+            <h3>Smart Journal</h3>
+            <p>Write your thoughts privately and receive AI-powered reflections.</p>
+        </div>
+
+        <div class="feature-card">
+            <div class="icon">🧘</div>
+            <h3>Wellness Resources</h3>
+            <p>Explore breathing exercises, meditation, and self-care suggestions.</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+
+<section class="how-it-works" id="how-it-works">
+
+    <h2>How MindMate AI Works</h2>
+
+    <p class="how-subtitle">
+        Start your mental wellness journey in just four simple steps.
+    </p>
+
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-number">1</div>
+            <h3>Create an Account</h3>
+            <p>Sign up securely and personalize your wellness journey.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <h3>Track Your Mood</h3>
+            <p>Record how you feel every day and build healthy habits.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <h3>Chat with AI</h3>
+            <p>Talk with your AI companion whenever you need support.</p>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <h3>Grow Every Day</h3>
+            <p>Receive insights, reflections, and wellness suggestions.</p>
+        </div>
+
+    </div>
+
+</section>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
+{% include 'partials/footer.html' %}

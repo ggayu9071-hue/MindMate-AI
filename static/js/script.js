@@ -1,0 +1,1 @@
+console.log("MindMate AI Loaded 🚀");

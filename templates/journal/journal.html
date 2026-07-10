@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Journal | MindMate AI</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/journal.css') }}">
+
+</head>
+
+<body>
+
+<div class="journal-container">
+
+    <h1>📖 My Journal</h1>
+
+    <p class="subtitle">
+        Write about your day. Your thoughts are private.
+    </p>
+
+    <form method="POST">
+
+        <textarea
+            name="content"
+            placeholder="How are you feeling today?"
+            required></textarea>
+
+        <button class="btn btn-primary">
+            Save Entry
+        </button>
+
+    </form>
+
+    <hr>
+
+    <h2>Previous Entries</h2>
+
+    {% if journals %}
+
+        {% for journal in journals %}
+
+        <div class="journal-card">
+
+            <p>{{ journal.content }}</p>
+
+            <small>
+                {{ journal.created_at.strftime("%d %B %Y %I:%M %p") }}
+            </small>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No journal entries yet.</p>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/dashboard" class="btn btn-secondary">
+        ← Back to Dashboard
+    </a>
+
+</div>
+
+</body>
+</html>

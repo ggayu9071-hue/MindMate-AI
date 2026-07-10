@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Dashboard | MindMate AI</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      }
+
+      .container {
+        width: 1000px;
+        margin: 40px auto;
+      }
+
+      .welcome {
+        background: #6c63ff;
+        color: white;
+        padding: 30px;
+        border-radius: 20px;
+        margin-bottom: 30px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+      }
+
+      .dashboard-card {
+        background: white;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        text-align: center;
+      }
+
+      .dashboard-card h2 {
+        margin-bottom: 15px;
+      }
+
+      .dashboard-card p {
+        color: #666;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      .logout {
+        text-align: center;
+        margin-top: 35px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="welcome">
+        <h1>👋 Welcome, {{ user.name }}</h1>
+
+        <p>
+          Welcome back to MindMate AI. Take care of your mind, one day at a
+          time.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="dashboard-card">
+          <h2>😊 Today's Mood</h2>
+
+          {% if latest_mood %}
+
+          <h1>{{ latest_mood.mood }}</h1>
+
+          <p>{{ latest_mood.created_at.strftime("%d %B %Y") }}</p>
+
+          {% else %}
+
+          <p>No mood recorded today.</p>
+
+          {% endif %}
+
+          <br />
+
+          <a href="/mood" class="btn btn-primary"> Update Mood </a>
+        </div>
+
+        <div class="dashboard-card">
+          <h2>🤖 MindMate AI</h2>
+
+          <p>Talk with your AI companion anytime.</p>
+
+          <br />
+
+          <a href="/chat" class="btn btn-primary"> Open Chat </a>
+        </div>
+
+
+        <div class="dashboard-card">
+          <h2>📊 Mood Analytics</h2>
+
+          <p>Coming Soon...</p>
+        </div>
+      </div>
+      <div class="dashboard-card">
+        <h2>📖 Journal</h2>
+
+        <p>Record your thoughts and feelings.</p>
+
+        <br />
+
+        <a href="/journal" class="btn btn-primary"> Open Journal </a>
+      </div>
+      
+       <div class="logout">
+        <a href="/logout" class="btn btn-secondary"> Logout </a>
+      </div>
+    </div>
+  </body>
+</html>

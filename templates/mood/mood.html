@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Choose Your Mood</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+
+        body{
+            font-family:'Poppins',sans-serif;
+            background:linear-gradient(135deg,#EEF2FF,#F8FAFC);
+        }
+
+        .container{
+            width:700px;
+            margin:60px auto;
+            background:white;
+            padding:40px;
+            border-radius:20px;
+            box-shadow:0 10px 30px rgba(0,0,0,.1);
+        }
+
+        h1{
+            text-align:center;
+            margin-bottom:10px;
+        }
+
+        p{
+            text-align:center;
+            color:#666;
+            margin-bottom:30px;
+        }
+
+        .moods{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:20px;
+        }
+
+        label{
+            cursor:pointer;
+        }
+
+        input[type="radio"]{
+            display:none;
+        }
+
+        .card{
+
+            border:2px solid #ddd;
+            border-radius:15px;
+            padding:20px;
+            text-align:center;
+            transition:.3s;
+            font-size:18px;
+
+        }
+
+        input[type="radio"]:checked + .card{
+
+            border-color:#6C63FF;
+            background:#ECEBFF;
+
+        }
+
+        button{
+
+            margin-top:30px;
+            width:100%;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>😊 How are you feeling today?</h1>
+
+    <p>Select your current mood.</p>
+
+    <form action="/save_mood" method="POST">
+
+        <div class="moods">
+
+            <label>
+                <input type="radio" name="mood" value="Happy" required>
+                <div class="card">😊<br>Happy</div>
+            </label>
+
+            <label>
+                <input type="radio" name="mood" value="Calm">
+                <div class="card">😌<br>Calm</div>
+            </label>
+
+            <label>
+                <input type="radio" name="mood" value="Neutral">
+                <div class="card">😐<br>Neutral</div>
+            </label>
+
+            <label>
+                <input type="radio" name="mood" value="Sad">
+                <div class="card">😔<br>Sad</div>
+            </label>
+
+            <label>
+                <input type="radio" name="mood" value="Anxious">
+                <div class="card">😟<br>Anxious</div>
+            </label>
+
+            <label>
+                <input type="radio" name="mood" value="Angry">
+                <div class="card">😡<br>Angry</div>
+            </label>
+
+        </div>
+
+        <button class="btn btn-primary">
+            Continue →
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>
